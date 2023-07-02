@@ -1,0 +1,39 @@
+{% include 'header.html' %}
+    <!-- ======= Contact Us Section ======= -->
+   
+    <section id="contact" class="contact"><br><br><br>
+        <div class="container">
+  
+            <div class="row"><br><br>
+           
+                <h2 class="text-center">Contact Us</h2>
+                
+         
+              <form action="{% url 'contact' %}" method="POST" role="form" >
+                {% csrf_token %}
+                <div class="row">
+                  <div class="form-group col-md-6">
+                    <label for="name">Your Name</label>
+                    <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                  </div>
+                  <div class="form-group col-md-6 mt-3 mt-md-0">
+                    <label for="name">Your Phone</label>
+                    <input type="text" class="form-control" name="phone" placeholder="Your Phone" required>
+                  </div>
+                </div>
+  
+                <div class="form-group mt-3">
+                  <label for="name">Message</label>
+                  <textarea class="form-control" name="content" rows="10" required></textarea>
+                </div><br>
+
+                <div class="text-center"><button class='btn btn-info' type="submit">Send Message</button></div>
+              </form>
+            </div>
+  
+        
+  
+        </div>
+      </section><!-- End Contact Us Section -->
+      
+{% include 'footer.html' %}
