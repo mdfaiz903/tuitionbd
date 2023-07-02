@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.timezone import now
+from PIL import Image
 # Create your models here.
 class Contact(models.Model):
    name = models.CharField(max_length=50)
@@ -15,10 +16,11 @@ class post(models.Model):
    )
    id = models.AutoField(primary_key=True)
    title = models.CharField(max_length=100)
-   slug = models.CharField(max_length=50,default='title')
+   slug = models.CharField(max_length=50,default=title)
    email = models.EmailField(max_length=254)
    salary = models.FloatField()
    details = models.TextField()
    available = models.BooleanField()
    catagory= models.CharField(max_length=50, choices=CATAGORY)
    created_at = models.DateTimeField(default=now)
+   image = models.ImageField(default='default.jpg', upload_to='tuition/images')
