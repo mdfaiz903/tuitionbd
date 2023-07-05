@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.timezone import now
 from PIL import Image
+from django.utils.text import slugify
 # Create your models here.
 class Contact(models.Model):
    name = models.CharField(max_length=50)
@@ -24,3 +25,11 @@ class post(models.Model):
    catagory= models.CharField(max_length=50, choices=CATAGORY)
    created_at = models.DateTimeField(default=now)
    image = models.ImageField(default='default.jpg', upload_to='tuition/images')
+   def save(self,*args, **kwargs):
+      self.slug = slugify(self.title)
+      super(post,self).save(*args, **kwargs)
+      img = Image.open(self.image.path)
+      if img.height > 300 or img.width>300:
+         img_size=(300,300)
+         img.thumbnail(img_size)
+         img.save(self.image.path)

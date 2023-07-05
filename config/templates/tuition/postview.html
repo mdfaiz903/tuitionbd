@@ -1,0 +1,17 @@
+
+{% include 'header.html' %}
+<br><br><br>
+{% block body %}
+    {% for p in post %}
+    
+    {{p.title}}<br>
+    {{p.email}}<br>
+    {{p.salary}}<br>
+    {{p.details}}<br>
+    <img src="{{p.image.url}}" alt="Image">
+
+    <hr>
+    {% endfor %}
+{% endblock body %}
+
+{% include 'footer.html' %}

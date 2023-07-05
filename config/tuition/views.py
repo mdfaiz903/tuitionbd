@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import *
+from .models import Contact,post
 # Create your views here.
 def homeview(request):
     return render(request,'home.html')
@@ -14,3 +14,8 @@ def contact(request):
         data.save()
     
     return render(request,'contact.html')
+
+def postview(request):
+    P_data = post.objects.all()
+
+    return render(request,'tuition/postview.html',{'post':P_data})
