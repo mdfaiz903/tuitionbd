@@ -1,6 +1,6 @@
 
 from django.urls import path
-from . views import homeview,contact,post,postview
+from . views import homeview,contact,post,postview,postcreate
 
 urlpatterns = [
     
@@ -8,4 +8,5 @@ urlpatterns = [
     path('contact/', contact, name= "contact"),
     path('post/', post, name= "post"),
     path('postview/', postview, name= "postview"),
+    path('postcreate/', postcreate, name= "postcreate"),
 ]
