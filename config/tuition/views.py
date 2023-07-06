@@ -70,3 +70,6 @@ def postcreate(request):
 #         return super().form_valid(form)
 #     def get_success_url(self):
 #         return reverse_lazy('tuition:postview')
+
+def about(request):
+    return render(request,'about.html')
