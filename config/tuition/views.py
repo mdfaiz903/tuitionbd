@@ -11,11 +11,15 @@ def contact(request):
         name = request.POST['name']
         phone = request.POST['phone']
         content = request.POST['content']
+        
         data = Contact(name=name,phone=phone,content=content)
         data.save()
     
     return render(request,'contact.html')
-
+#for showing post list
+def post_detail(request,id):
+    postdetail = post.objects.get(id=id)
+    return render(request,'tuition/postdetail.html',{'postdetail':postdetail})
 #for showing post list
 def post_list_view(request):
     postlist = post.objects.all()

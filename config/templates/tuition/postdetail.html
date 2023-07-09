@@ -1,0 +1,60 @@
+
+{% include 'header.html' %}
+<br><br><br>
+{% block body %}
+{% load humanize %}
+<div class='container '>
+    <h1 class=text-center>Post Details </h1><hr>
+<div class="card mx-auto" style="width: 25rem;">
+    <img src="{{postdetail.image.url}}" class="card-img-top " alt="Image">
+    <div class="card-body">
+      <h5 class="card-title">{{postdetail.title}}</h5>
+      <p>{{postdetail.details}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Title = {{postdetail.title}}<br></li>
+      <li class="list-group-item">Email = {{postdetail.email}}<br></li>
+      <li class="list-group-item">Subject = {% for s  in postdetail.subject.all  %}
+        {{s.name}},
+    {% endfor %}</li>
+      <li class="list-group-item">Class = {% for c  in postdetail.class_in.all  %}
+        {{c.name}}
+    {% endfor %}</li>
+    <li class="list-group-item"> Salary = {{postdetail.salary}}<br></li>
+    <li class="list-group-item">Catagory = {{postdetail.catagory}}<br></li>
+    <li class="list-group-item">Mediam = {{postdetail.medium}}<br></li>
+    <li class="list-group-item">Create Time = {{postdetail.created_at | naturaltime}}<br></li>
+    <li class="list-group-item">available = {%if postdetail.available %}Yes{%else%} No {%endif%} <br></li>
+    </ul>
+    <div class="card-body">
+        <a href="/tuition/postlist/" class="card-link btn btn-info">Back</a>
+        {% if request.user == postdetail.user %}
+
+        <a href="/tuition/Edit/{{postdetail.id}}/" class="card-link btn btn-primary">Edit</a>
+        <a href="/tuition/Delete/{{postdetail.id}}/" class="card-link btn btn-danger">Delete</a>
+        {% endif %}
+    </div>
+  </div>
+  <div class="row">
+  <div class="col">
+    <div class="fb-comments" 
+    data-href="http://127.0.0.1:8000/tuition/postdetail/{{postdetail.id}}/" 
+    data-width="" 
+    data-numposts="10">
+  </div>
+</div>
+  <div class="col">
+    <div class="fb-like" 
+    data-href="http://127.0.0.1:8000/tuition/postdetail/{{postdetail.id}}/" 
+    data-width="" 
+    data-layout="box_count" 
+    data-action="like" 
+    data-size="large" 
+    data-share="true">
+  </div>
+</div>
+</div>
+</div>
+{% endblock body %} 
+
+{% include 'footer.html' %}
