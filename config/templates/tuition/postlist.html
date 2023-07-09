@@ -3,11 +3,11 @@
 <br><br><br>
 {% block body %}
 
-    {% for p in post %}
+    {% for p in postList %}
     
-    {{p.title}}<br>
+    {{p.title}} <a href="/tuition/details/{{p.pk}}">Details</a>
 
-    <img src="{{p.image.url}}" alt="Image">
+    
 
     <hr>
     {% endfor %}

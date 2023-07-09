@@ -16,6 +16,10 @@ def contact(request):
     
     return render(request,'contact.html')
 
+#for showing post list
+def post_list_view(request):
+    postlist = post.objects.all()
+    return render(request,'tuition/postlist.html',{'postList':postlist})
 def postview(request):
     P_data = post.objects.all()
 
