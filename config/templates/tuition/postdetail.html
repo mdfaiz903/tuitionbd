@@ -30,8 +30,8 @@
         <a href="/tuition/postlist/" class="card-link btn btn-info">Back</a>
         {% if request.user == postdetail.user %}
 
-        <a href="/tuition/Edit/{{postdetail.id}}/" class="card-link btn btn-primary">Edit</a>
-        <a href="/tuition/Delete/{{postdetail.id}}/" class="card-link btn btn-danger">Delete</a>
+        <a href="/tuition/postEdit/{{postdetail.id}}/" class="card-link btn btn-primary">Edit</a>
+        <a href="/tuition/postDelete/{{postdetail.id}}/" class="card-link btn btn-danger">Delete</a>
         {% endif %}
     </div>
   </div>

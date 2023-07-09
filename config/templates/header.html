@@ -37,7 +37,7 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1 class="text-light"><a href="index.html"><span>TUITIONI</span></a></h1>
+        <h1 class="text-light"><a href="{% url 'home' %}"><span>TUITIONI</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
@@ -47,14 +47,14 @@
           <li><a class="nav-link scrollto active" href="{% url 'home' %}">Home</a></li>
           <li><a class="nav-link scrollto" href="{% url 'contact' %}">Contact</a></li>
           <li><a class="nav-link scrollto" href="{% url 'about_us' %}">About Us</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li class="dropdown"><a href="#"><span>Post</span> <i class="bi bi-chevron-down"></i></a>
+          <!-- <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li> -->
+          <!-- <li><a class="nav-link scrollto" href="#team">Team</a></li> -->
+          <li class="dropdown"><a href="{% url 'postlist' %}"><span>Post</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="{% url 'postview' %}">Post View</a></li>
-              <li><a href="{% url 'postcreate' %}">Post Creat</a></li>
               <li><a href="{% url 'postlist' %}">Post List</a></li>
+              <li><a href="{% url 'postcreate' %}">Post Create</a></li>
+              <li><a href="{% url 'postview' %}">Post View</a></li>
               
             </ul>
           </li>

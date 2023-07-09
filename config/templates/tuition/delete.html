@@ -1,0 +1,15 @@
+{% include 'header.html' %}
+<br><br><br>
+{% block body %}
+<div class='container m-5 '>
+    <div class="card mx-auto p-5"style="width: 50rem;">
+    <form method="POST">
+        {% csrf_token %}
+        <h2>Are you sure to Delete this post?</h2>
+        <button type="submit" class="btn btn-lg btn-danger ">Yes</button>
+    </form>
+</div>
+    </div>
+
+    {% endblock body %} 
+

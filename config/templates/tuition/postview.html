@@ -2,15 +2,21 @@
 {% include 'header.html' %}
 <br><br><br>
 {% block body %}
-
-    {% for p in post %}
+<div class="container">
+    <h1 class=text-center>ALL Post </h1><hr>
+    <div class="card mx-auto"style="width: 25rem;">
+       
+        {% for p  in post %}
+        <h3>
+         {{p.title}}<br>
+        </h3>
+        <img src="{{p.image.url}}" alt="Image">
     
-    {{p.title}}<br>
+        <hr>
+        {% endfor %}
+    </div>
+</div>
 
-    <img src="{{p.image.url}}" alt="Image">
-
-    <hr>
-    {% endfor %}
 {% endblock body %} 
 
 {% include 'footer.html' %}

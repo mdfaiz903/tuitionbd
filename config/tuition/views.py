@@ -30,7 +30,21 @@ def postview(request):
     return render(request,'tuition/postview.html',{'post':P_data})
 
 
-
+#For Update method
+from django.views.generic import UpdateView,DeleteView
+class postEdit(UpdateView):
+    model=post
+    form_class = post_form
+    template_name='tuition/post_create.html' 
+    def get_success_url(self):
+        
+        return '/tuition/postlist/'
+#For Delete method     
+class postDelete(DeleteView):
+    model=post
+    template_name='tuition/delete.html'
+    def get_success_url(self):
+        return '/tuition/postlist/'
 
 # def postcreate(request):
 # 	# dictionary for initial data with
@@ -61,7 +75,7 @@ def postcreate(request):
             for i in cls:
                 obj.class_in.add(i)
                 obj.save()
-        return HttpResponseRedirect('/tuition/postview/')
+        return HttpResponseRedirect('/tuition/postlist/')
 
     else:
         form = post_form()

@@ -2,15 +2,19 @@
 {% include 'header.html' %}
 <br><br><br>
 {% block body %}
-
-    {% for p in postList %}
+<div class='container '>
+    <h1 class=text-center>Post Details </h1><hr>
+<div class="card mx-auto p-3" style="width: 40rem;">
+        {% for p in postList %}
+        <span><b>{{p.title}}</b> : By - {{p.user.username}} </span>
+        <a href="/tuition/post_detail/{{p.id}}">Details</a>
     
-    {{p.title}} <a href="/tuition/post_detail/{{p.id}}">Details</a>
-
+        
     
-
-    <hr>
-    {% endfor %}
+        {% endfor %}
+    </div>
+</div>
+   
 {% endblock body %} 
 
 {% include 'footer.html' %}
