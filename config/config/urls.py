@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homeview, name= "home"),
     path('tuition/', include('tuition.urls')),
+    path('session/', include('session.urls')),
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
