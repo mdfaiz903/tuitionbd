@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect,HttpResponseRedirect
 from .models import Contact,post
 from .forms import post_form
+from django.contrib import messages
 # Create your views here.
 def homeview(request):
     return render(request,'home.html')
@@ -14,6 +15,7 @@ def contact(request):
         
         data = Contact(name=name,phone=phone,content=content)
         data.save()
+        messages.success(request,"From successfully submited .")
     
     return render(request,'contact.html')
 #for showing post list
@@ -30,21 +32,30 @@ def postview(request):
     return render(request,'tuition/postview.html',{'post':P_data})
 
 
-#For Update method
-from django.views.generic import UpdateView,DeleteView
+# #For Update method
+from django.views.generic import UpdateView
 class postEdit(UpdateView):
-    model=post
+    model = post
     form_class = post_form
-    template_name='tuition/post_create.html' 
+    template_name = 'tuition/post_create.html'
+
     def get_success_url(self):
-        
         return '/tuition/postlist/'
-#For Delete method     
+
+    def form_valid(self, form):
+        messages.success(self.request, "Form successfully Updated.")
+        return super().form_valid(form)
+
+#For Delete method  
+from django.views.generic import DeleteView   
 class postDelete(DeleteView):
     model=post
     template_name='tuition/delete.html'
     def get_success_url(self):
         return '/tuition/postlist/'
+    def form_valid(self, form):
+        messages.warning(self.request, "Form successfully Deleted.")
+        return super().form_valid(form)
 
 # def postcreate(request):
 # 	# dictionary for initial data with
@@ -75,6 +86,8 @@ def postcreate(request):
             for i in cls:
                 obj.class_in.add(i)
                 obj.save()
+        messages.success(request, "Form successfully submitted.")
+
         return HttpResponseRedirect('/tuition/postlist/')
 
     else:
