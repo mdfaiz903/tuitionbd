@@ -28,3 +28,15 @@ def logoutuser(request):
     logout(request)
     messages.success(request,'Successfully logout')
     return redirect('home')
+
+from.forms import registationForm
+
+def registation(request):
+    if request.method=='POST':
+        form = registationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = registationForm()
+    return render(request,'session/registation.html',{'form':form})
