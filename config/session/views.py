@@ -24,3 +24,7 @@ def loginuser(request):
     return render(request,'session/login.html',{'form':form})
 
 
+def logoutuser(request):
+    logout(request)
+    messages.success(request,'Successfully logout')
+    return redirect('home')

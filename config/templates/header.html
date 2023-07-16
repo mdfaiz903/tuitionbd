@@ -59,8 +59,13 @@
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="/admin/" target="_blank">admin</a></li>
+          {% if user.is_authenticated %}
+          <li><a class="nav-link " href="{% url 'logout' %}" target="_blank">Log-out</a></li>
+          {% else %}
           <li><a class="nav-link " href="{% url 'login' %}" target="_blank">Login</a></li>
           <li><a class="nav-link" href="" target="_blank">Registation</a></li>
+
+          {% endif %}
           <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
