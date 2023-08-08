@@ -14,6 +14,6 @@ urlpatterns = [
     path('postEdit/<int:pk>/', postEdit.as_view(), name= "postEdit"),
     
     path('postDelete/<int:pk>/', postDelete.as_view(), name= "postDelete"),
-    path('search', searchview.as_view(), name= "search"),
+    path('search', searchview.as_view(), name= "search"), #search urls
     path('about_us/', about, name= "about_us"),
 ]

@@ -58,7 +58,7 @@ class postDelete(DeleteView):
     def form_valid(self, form):
         messages.warning(self.request, "Form successfully Deleted.")
         return super().form_valid(form)
-    
+# search function start here   
 from django.views.generic import ListView 
 from django.db.models import Q   
 class searchview(ListView):
