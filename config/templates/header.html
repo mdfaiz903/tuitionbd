@@ -66,11 +66,18 @@
           <li><a class="nav-link" href="{% url 'registation' %}" target="_blank">Registation</a></li>
 
           {% endif %}
-          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
+         
           <li><a class="getstarted scrollto" href="">{% now "h:i:A" %}</a></li><!--samll h for 12 capital H for 24; i for minute A for AM/PM a for am/pm-->
           <li><a class="getstarted scrollto" href="">{% now "D F Y" %}</a></li>
+          
+          <form class="d-flex ms-2" role="search" action="{% url 'search' %}" method="GET">
+      
+        <input class="form-control me-2" type="search" name="s" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
+
       </nav><!-- .navbar -->
 
     </div>
@@ -83,5 +90,6 @@
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 {% endfor %} 
+
  
 

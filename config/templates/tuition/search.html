@@ -1,0 +1,20 @@
+
+{% include 'header.html' %}
+<br><br><br>
+{% block body %}
+<div class='container '>
+    <h1 class=text-center>seaserch Details </h1><hr>
+<div class="card mx-auto p-3" style="width: 40rem;">
+        {% for p in object_list %}
+        <span><b>{{p.title}}</b> : By - {{p.user.username}} </span>
+        <a href="/tuition/post_detail/{{p.id}}">Details</a>
+    
+        
+    
+        {% endfor %}
+    </div>
+</div>
+   
+{% endblock body %} 
+
+{% include 'footer.html' %}

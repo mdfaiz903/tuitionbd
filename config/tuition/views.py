@@ -1,3 +1,5 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import render,redirect,HttpResponseRedirect
 from .models import Contact,post
 from .forms import post_form
@@ -56,6 +58,19 @@ class postDelete(DeleteView):
     def form_valid(self, form):
         messages.warning(self.request, "Form successfully Deleted.")
         return super().form_valid(form)
+    
+from django.views.generic import ListView 
+from django.db.models import Q   
+class searchview(ListView):
+    model = post
+    template_name = 'tuition/search.html'
+
+    def get_queryset(self):  # new
+        query = self.request.GET.get("s")
+        object_list = post.objects.filter(
+            Q(title__icontains=query) | Q(details__icontains=query) |Q(medium__icontains=query) |Q(catagory__icontains=query) |Q(subject__name__icontains=query) 
+        ).distinct()
+        return object_list
 
 # def postcreate(request):
 # 	# dictionary for initial data with
